@@ -13,14 +13,15 @@ import {
 import { BsFillAlarmFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
 function Delicious() {
+  const api ="http://95.111.202.157:8001/api/v1/getAllRecipes"
   const [recipe, setRecipe] = useState([]);
 
   useEffect(() => {
     const loadPost = async () => {
       const response = await axios.get(
-        "http://95.111.202.157:8001/api/v1/getAllRecipes"
+        api
       );
-      console.log("ajay", response);
+  
 
       setRecipe(response.data);
     };
@@ -49,9 +50,8 @@ function Delicious() {
       <Grid templateColumns="repeat(3, 1fr)" gap={6} m={10}>
         {recipe.slice(1, 7).map((image) => (
           <GridItem w="100%" h="10px" key={image._id} marginBottom="300px">
-            <Box p={5} bg="#EBF8FF" borderRadius={60} as="article">
+            <Box  bg="#EBF8FF" borderRadius={30} as="article" width="300px"height="270px">
               <Image
-                paddingLeft="40px"
                 w="300px"
                 height="200px"
                 src={"http://95.111.202.157:8001/" + image.recipeId.image}
@@ -73,12 +73,4 @@ function Delicious() {
     </>
   );
 }
-
 export default Delicious;
-<Text align="center" marginTop="100px">
-<Heading>Simple and tasty recipes</Heading>
-<Text>
-  Lorem ipsum dolor sit amet consectetur ipsum dolor sit amet
-  consectetur{" "}
-</Text>
-</Text>
