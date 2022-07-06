@@ -1,4 +1,5 @@
 import { Heading, Text, Grid, GridItem, Image,Button } from "@chakra-ui/react";
+import { FaInstagram } from "react-icons/fa";
 const Instagram = () => {
   return (
     <>
@@ -45,7 +46,7 @@ const Instagram = () => {
           />
         </GridItem>
       </Grid>
-      <Button borderRadius="10px" bgColor="#000" colorScheme="#fff" marginLeft="550px" marginBottom="20px">visit our instagram</Button>
+      <Button borderRadius="10px" bgColor="#000" colorScheme="#fff" marginLeft="550px" marginBottom="20px" padding="40px" >visit our instagram<FaInstagram /></Button>
     </>
   );
 };

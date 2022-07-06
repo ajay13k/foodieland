@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Heading, GridItem, Grid, Image, Text, HStack } from "@chakra-ui/react";
+import {
+  Heading,
+  GridItem,
+  Grid,
+  Image,
+  Text,
+  HStack,
+  Box,
+  Button,
+} from "@chakra-ui/react";
+import { BsFillAlarmFill } from "react-icons/bs";
+import { ImSpoonKnife } from "react-icons/im";
 function Delicious() {
   const [recipe, setRecipe] = useState([]);
 
@@ -19,40 +30,55 @@ function Delicious() {
 
   return (
     <>
-        <HStack marginTop="30px">
-          <Heading fontSize="40px" fontWeight="bold" marginLeft="20px" marginRight="200px">
-            try this delicious recipe
-            <br /> to make your day
-          </Heading>
-          <Text align="center" marginTop="100px"  >
-            Lorem ipsum dolor sit amet consectetur ipsum dolor sit amet<br/>
-            consectetur ipsum dolor sit amet consectetur,
-          </Text>
-        </HStack>
-        <Grid templateColumns="repeat(3, 1fr)" gap={6} m={10}>
-          {recipe.slice(1, 7).map((image) => (
-            <GridItem
-              w="100%"
-              h="10px"
-              key={image._id}
-              m={5}
-              marginBottom="300px"
-              marginLeft="90px"
-            >
+      <HStack marginTop="30px">
+        <Heading
+          fontSize="40px"
+          fontWeight="bold"
+          marginLeft="20px"
+          marginRight="200px"
+        >
+          try this delicious recipe
+          <br /> to make your day
+        </Heading>
+        <Text align="center" marginTop="100px">
+          Lorem ipsum dolor sit amet consectetur ipsum dolor sit amet
+          <br />
+          consectetur ipsum dolor sit amet consectetur,
+        </Text>
+      </HStack>
+      <Grid templateColumns="repeat(3, 1fr)" gap={6} m={10}>
+        {recipe.slice(1, 7).map((image) => (
+          <GridItem w="100%" h="10px" key={image._id} marginBottom="300px">
+            <Box p={5} bg="#EBF8FF" borderRadius={60} as="article">
               <Image
-                border="2px solid black"
-                w="200px"
+                paddingLeft="40px"
+                w="300px"
                 height="200px"
                 src={"http://95.111.202.157:8001/" + image.recipeId.image}
               />
-              <Text width="250px" height="6px">
-                {image.recipeId.description}
-              </Text>
-            </GridItem>
-          ))}
-        </Grid>
+              <HStack ml={10} justifyItems={"space-between"}>
+                <Button borderRadius="10px" bgColor="#EDFDFD">
+                  <BsFillAlarmFill />
+                  30 Minutes
+                </Button>
+                <Button borderRadius="10px" bgColor="#EDFDFD">
+                  <ImSpoonKnife />
+                  Chicken
+                </Button>
+              </HStack>
+            </Box>
+          </GridItem>
+        ))}
+      </Grid>
     </>
   );
 }
 
 export default Delicious;
+<Text align="center" marginTop="100px">
+<Heading>Simple and tasty recipes</Heading>
+<Text>
+  Lorem ipsum dolor sit amet consectetur ipsum dolor sit amet
+  consectetur{" "}
+</Text>
+</Text>

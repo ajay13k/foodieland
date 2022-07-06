@@ -7,7 +7,7 @@ import Static from "./componets/static";
 import Static2 from "./componets/static2";
 import Footer from "./componets/footer";
 import Category_api from "./componets/category";
-import Recipes_api from "./componets/recipes";
+import Recipe_app from "./componets/recipes";
 import Instagram from "./componets/instagram";
 import Delicious from "./componets/deliciousRecipe";
 
@@ -17,7 +17,7 @@ export default function App() {
       <Navbar />
       <ImageSlider slides={SlideData} />
       <Category_api />
-      <Recipes_api />
+      <Recipe_app />
       <Static />
       <Instagram/>
       <Delicious/>

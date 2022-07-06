@@ -22,16 +22,18 @@ function Category_api() {
       <div>
         <HStack>
         <Heading marginRight='850px'>Category</Heading>
-        <Text><Button bg="#ccffff" color="black" marginTop="20px" border="1px solid " >View All Categoryies</Button></Text>
+        <Text><Button bg="#EBF8FF" color="black" marginTop="20px" >View All Categoryies</Button></Text>
         </HStack>
         <Grid templateColumns="repeat(6, 1fr)" gap={6} m={10}>
           {category.slice(2,8).map((image) => (
-            <GridItem w="100%" h="10" key={image._id} m={10}>
+            <GridItem w="100%" h="10px" key={image._id} m={10} >
               <Image
                 w="100px"
                 src={"http://95.111.202.157:8001/" + image.image}
               />
+              <Heading marginLeft="20px" fontSize="20px">
               {image.categoryName}
+              </Heading>
             </GridItem>
           ))}
         </Grid>

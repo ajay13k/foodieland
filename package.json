@@ -9,6 +9,7 @@
     "@chakra-ui/react": "1.6.3",
     "@emotion/react": "11.4.0",
     "@emotion/styled": "11.3.0",
+    "@react-icons/all-files": "^4.1.0",
     "axios": "^0.27.2",
     "cards": "^2.0.1",
     "framer-motion": "4.1.17",
