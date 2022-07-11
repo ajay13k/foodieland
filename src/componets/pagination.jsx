@@ -6,7 +6,9 @@ import {
     HStack,
   } from "@chakra-ui/react";
   import React from "react";
-  
+  import Footer from './footer'
+  import Static2 from './static2';
+
   const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
     const pageNumber = [];
   
@@ -16,6 +18,7 @@ import {
      pageNumber.push(i);
     }
     return (
+        <>
       <Box>
         <Grid templateColumns={6} gap={6}>
             <HStack mt={5}>
@@ -36,6 +39,9 @@ import {
             </HStack>
         </Grid>
       </Box>
+      <Static2/>
+      <Footer/>
+      </>
     );
   };
   
