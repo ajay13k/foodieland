@@ -1,0 +1,33 @@
+.common:hover{
+    color: tomato;
+}
+.active{
+    color: tomato;
+}
+.facebook:hover{
+    color: blue;
+}
+.instagram:hover{
+    color: #f09433;
+}
+.twitter:hover{
+    color: #1DA1F2;
+}
+/* .logo:hover{
+    color:red;
+} */
+ .logo:hover{
+    display: block;
+
+    text-align: center;
+    letter-spacing: .04em;
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: normal;
+
+    background-position: center center;
+  }
+  nav{
+    margin-left: 450px;
+  }

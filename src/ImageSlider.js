@@ -15,10 +15,27 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { BsFillAlarmFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
 import { MdOutlineSlowMotionVideo, MdKitchen } from "react-icons/md";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import moment from "moment";
+
 const ImageSlider = ({ slides }) => {
+  const [data, setData] = useState([]);
+
+  const getPopularReceipeData = async () => {
+    const URL = "https://foodielandnod.herokuapp.com/api/popularRecipes";
+    const res = await axios.get(URL);
+    const receipeData = res.data;
+    setData(receipeData);
+  };
+
+  useEffect(() => {
+    getPopularReceipeData();
+  }, []);
+
   return (
     <Carousel infiniteLoop>
-      {slides.map((slide) => {
+      {data.map((item) => {
         return (
           <Box>
             <Flex
@@ -28,19 +45,14 @@ const ImageSlider = ({ slides }) => {
               mt={10}
               bg="#EBF8FF"
               borderRadius="15px"
+              color={"#000"}
             >
-              <Box w={700}>
+              <Box w={512}>
                 <Button borderRadius="10px" mt={10} ml={-300}>
                   <MdKitchen /> Hot Receipe
                 </Button>
-                <Heading
-                  fontSize="4xl"
-                  mt={25}
-                  ml={5}
-                  mr={20}
-                  textAlign="justify"
-                >
-                  Spicy Delicious Chicken Wings
+                <Heading fontSize="4xl" mt={25} ml={5} mr={20}>
+                  {item.recipeId.title}
                 </Heading>
                 <Text
                   fontSize={"sm"}
@@ -50,17 +62,16 @@ const ImageSlider = ({ slides }) => {
                   textAlign="justify"
                   mr={20}
                 >
-                  Lorem ipsum dolor sit amet, Lorem Ipsum has been the
-                  industry's standard dummy text ever since the 1500s
+                  {item.recipeId.description}
                 </Text>
                 <HStack ml={10} justifyItems={"space-between"}>
                   <Button borderRadius="10px" bgColor="#EDFDFD">
                     <BsFillAlarmFill />
-                    30 Minutes
+                    {item.recipeId.prepTime}
                   </Button>
                   <Button borderRadius="10px" bgColor="#EDFDFD">
                     <ImSpoonKnife />
-                    Chicken
+                    {item.recipeId.categoryId.categoryName}
                   </Button>
                 </HStack>
                 <Wrap
@@ -74,11 +85,20 @@ const ImageSlider = ({ slides }) => {
                     <Avatar
                       size="sm"
                       name="Kent Dodds"
-                      src="https://bit.ly/kent-c-dodds"
+                      src={
+                        "https://foodielandnod.herokuapp.com/" +
+                        item.recipeId.categoryId.Image
+                      }
                     />
                     <Box pl={3}>
-                      <Heading fontSize={"sm"}>John Smith</Heading>
-                      <Text fontSize={"sm"}>20 March 2022</Text>
+                      <Heading fontSize={"sm"}>
+                        {item.recipeId.categoryId.firstName}
+                      </Heading>
+                      <Text fontSize={"sm"}>
+                        {moment(item.recipeId.categoryId.createdAt).format(
+                          "MMM Do YY"
+                        )}
+                      </Text>
                     </Box>
                   </WrapItem>
                   <Button borderRadius="10px" bgColor="#000" colorScheme="#fff">
@@ -87,8 +107,8 @@ const ImageSlider = ({ slides }) => {
                   </Button>
                 </Wrap>
               </Box>
-              <Box w={700}>
-                <Image src={slide.image} height="500px" />
+              <Box w={512}>
+                    <Image src={"https://foodielandnod.herokuapp.com/" + item.image} height="500px" />
               </Box>
             </Flex>
           </Box>

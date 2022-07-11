@@ -10,14 +10,12 @@ import {
   HStack,
 } from "@chakra-ui/react";
 function Category_api() {
-  const api = "http://95.111.202.157:8001/api/getAllCategory";
+  const api = "https://foodielandnod.herokuapp.com/api/getAllCategory";
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
     const loadPost = async () => {
       const response = await axios.get(api);
-      console.log(response);
-
       setCategory(response.data);
     };
 
@@ -36,14 +34,14 @@ function Category_api() {
           </Text>
         </HStack>
         <Grid templateColumns="repeat(6, 1fr)" gap={6} m={10}>
-          {category.slice(2, 8).map((image) => (
-            <GridItem w="100%" h="10px" key={image._id} m={10}>
+          {category.slice(2, 8).map((img) => (
+            <GridItem w="100%" h="10px" key={img._id} m={10}>
               <Image
                 w="100px"
-                src={"http://95.111.202.157:8001/" + image.image}
+                src={"https://foodielandnod.herokuapp.com" + img.image}
               />
               <Heading marginLeft="20px" fontSize="20px">
-                {image.categoryName}
+                {img.categoryName}
               </Heading>
             </GridItem>
           ))}

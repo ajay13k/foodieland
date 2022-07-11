@@ -21,8 +21,6 @@ function Recipe_app() {
       const response = await axios.get(
         api
       );
-      console.log("ajay", response);
-
       setRecipe(response.data);
     };
 

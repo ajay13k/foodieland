@@ -1,3 +1,4 @@
+import "./index.css";
 import {
   Box,
   Flex,
@@ -8,7 +9,9 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
-export default function Navbar() {
+import React from "react";
+import { Link } from "react-router-dom";
+function Navbar() {
   return (
     <Box>
       <Flex
@@ -18,7 +21,6 @@ export default function Navbar() {
         borderColor={useColorModeValue("black.200", "gray.900")}
         align={"center"}
       >
-
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
           <Text
             fontWeight="bold"
@@ -27,31 +29,30 @@ export default function Navbar() {
             fontFamily={"heading"}
             color={useColorModeValue("gray.800", "black")}
           >
-            Foodieland
+            <a href="#" title="Logo" className="logo">foodieland </a>
           </Text>
         </Flex>
-        <HStack marginRight="400px" fontWeight="bold" spacing='50px'>
-          <Text>Home</Text>
-          <Text>Recipes</Text>
-          <Text>Blog</Text>
-          <Text>Contact</Text>
-          <Text>About us</Text>
-        </HStack>
-
+        <HStack marginRight="300px" fontWeight="bold" spacing='50px'>
+              <Link className="active" to="/">Home</Link>
+              <Link className="common"to="/recipes">Recipes</Link>
+              <Link className="common"to="/blog">Blog</Link>
+              <Link className="common"to="/contact">Contact</Link>
+              <Link className="common"to="/about">About us</Link>
+          </HStack>
         <Stack
           flex={{ base: 1, md: 0 }}
           justify={"flex-end"}
           direction={"row"}
           spacing={6}
         >
-          <HStack>
-            <FaFacebook />
-            <FaInstagram />
-            <FaTwitter />
+          <HStack mr="50px">
+            <FaFacebook  className="facebook" title="facebook"/>
+            <FaInstagram className="instagram" title="instagram"/>
+            <FaTwitter className="twitter" title="twitter"/>
           </HStack>
         </Stack>
       </Flex>
     </Box>
   );
 }
-
+export default Navbar;
