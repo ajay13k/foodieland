@@ -21,7 +21,7 @@ const IMAGE =
 
 export default function Instagram() {
   return (
-    <Container  mb={6} maxW="container.lg">
+    <Container  mb={6} maxW={1150} mx="auto">
       <Stack
         textAlign={'center'}
         align={'center'}

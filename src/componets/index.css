@@ -1,8 +1,10 @@
 .common:hover{
     color: tomato;
+    text-decoration: none;
 }
 .active{
     color: tomato;
+    text-decoration: none;
 }
 .facebook:hover{
     color: blue;
@@ -27,6 +29,7 @@
     line-height: normal;
 
     background-position: center center;
+    text-decoration: none;
   }
   nav{
     margin-left: 450px;

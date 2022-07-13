@@ -9,11 +9,12 @@ import {
   HStack,
   Box,
   Button,
+  Container,
 } from "@chakra-ui/react";
 import { BsFillAlarmFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
 function Delicious() {
-  const api ="http://95.111.202.157:8001/api/v1/getAllRecipes"
+  const api ="https://foodielandnod.herokuapp.com/api/v1/getAllRecipes"
   const [recipe, setRecipe] = useState([]);
 
   useEffect(() => {
@@ -31,6 +32,7 @@ function Delicious() {
 
   return (
     <>
+    <Container maxW={1150} mx="auto">
       <HStack marginTop="30px">
         <Heading
           fontSize="40px"
@@ -54,7 +56,7 @@ function Delicious() {
               <Image
                 w="300px"
                 height="200px"
-                src={"http://95.111.202.157:8001/" + image.recipeId.image}
+                src={"https://foodielandnod.herokuapp.com/" + image.recipeId.image}
               />
               <HStack ml={10} justifyItems={"space-between"}>
                 <Button borderRadius="10px" bgColor="#EDFDFD">
@@ -70,6 +72,7 @@ function Delicious() {
           </GridItem>
         ))}
       </Grid>
+      </Container>
     </>
   );
 }
