@@ -12,11 +12,19 @@ import {
   Textarea,
   Image,
   Select,
+  FormErrorMessage,
+  FormHelperText,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import Static2 from "../componets/static2";
 import ContactRecipe from "../componets/contactRecipe";
 import Footer from "../componets/footer";
 const Contact = () => {
+  const [input, setInput] = useState("");
+
+  const handleInputChange = (e) => setInput(e.target.value);
+
+  const isError = input === "";
   return (
     <>
       <Container maxW={1124} mx="auto">
@@ -38,23 +46,43 @@ const Contact = () => {
                   <Input type="text" size="md" placeholder="enter your name" />
                 </InputGroup>
               </FormControl>
-              <FormControl id="email address">
+              <FormControl id="email address" isInvalid={isError}>
                 <FormLabel>EMAIL ADDRESS</FormLabel>
                 <InputGroup borderColor="#E0E1E7">
-                  <Input type="text" size="md" placeholder="enter your email" />
+                  <Input
+                    onChange={handleInputChange}
+                    type="text"
+                    size="md"
+                    placeholder="enter your email"
+                  />
                 </InputGroup>
+                {!isError ? (
+                  <FormHelperText>
+                    Enter the email you'd like to receive the newsletter on.
+                  </FormHelperText>
+                ) : (
+                  <FormErrorMessage>Email is required.</FormErrorMessage>
+                )}
               </FormControl>
             </HStack>
             <HStack spacing="50px" mb="15px">
-              <FormControl id="subject">
+              <FormControl id="subject" isInvalid={isError}>
                 <FormLabel>SUBJECT</FormLabel>
                 <InputGroup borderColor="#E0E1E7">
                   <Input
+                    onChange={handleInputChange}
                     type="text"
                     size="md"
                     placeholder="enter your subject"
                   />
                 </InputGroup>
+                {!isError ? (
+                  <FormHelperText>
+                    Enter the email you'd like to receive the newsletter on.
+                  </FormHelperText>
+                ) : (
+                  <FormErrorMessage>Subject is required.</FormErrorMessage>
+                )}
               </FormControl>
               <FormControl id="enquiry type">
                 <FormLabel>ENQUIRY TYPE</FormLabel>
@@ -78,6 +106,7 @@ const Contact = () => {
                 color="white"
                 ml="210px"
                 mt="30px"
+                type="submit"
               >
                 Submit
               </Button>

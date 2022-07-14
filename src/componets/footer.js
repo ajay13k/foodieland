@@ -9,6 +9,7 @@ import {
   Center,
   Container,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 const Footer = () => {
   return (
@@ -22,10 +23,24 @@ const Footer = () => {
           <Spacer />
           <Box mt={8} justifyContent="space-between">
             <HStack>
-              <Text>Recipes</Text>
-              <Text>Blog</Text>
-              <Text>Contact</Text>
-              <Text>About Us</Text>
+              <Link className="active" to="/">
+                Home
+              </Link>
+              <Link className="common" to="/recipes">
+                Recipes
+              </Link>
+              <Link className="common" to="/blog">
+                Blog
+              </Link>
+              <Link className="common" to="/blogPost">
+                Blog Post
+              </Link>
+              <Link className="common" to="/contact">
+                Contact
+              </Link>
+              <Link className="common" to="/about">
+                About us
+              </Link>
             </HStack>
           </Box>
         </Flex>
