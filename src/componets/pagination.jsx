@@ -15,7 +15,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
     <>
       <Center>
         <Box mb="30px">
-          <Grid templateColumns={6} gap={6}>
+          <Grid templateColumns={1} gap={6}>
             <HStack>
               {pageNumber.map((number) => (
                 <GridItem>
@@ -24,7 +24,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
                     onClick={() => paginate(number)}
                     bgColor={"blue.200"}
                     borderRadius={15}
-                    color={"white"}
+                    color={"black"}
                     _hover={{ bg: "#000", color: " #fff" }}
                   >
                     {number}

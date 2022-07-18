@@ -1,9 +1,5 @@
 .common:hover{
-    color: tomato;
-    text-decoration: none;
-}
-.active{
-    color: tomato;
+    color:  #ff6600;
     text-decoration: none;
 }
 .facebook:hover{
@@ -15,11 +11,11 @@
 .twitter:hover{
     color: #1DA1F2;
 }
-/* .logo:hover{
-    color:red;
-} */
+.logo:hover{
+    color:#ff6600;
+}
  .logo:hover{
-    display: block;
+    display: #ff6600;
 
     text-align: center;
     letter-spacing: .04em;
@@ -33,4 +29,7 @@
   }
   nav{
     margin-left: 450px;
+  }
+  .red{
+    color: tomato;
   }

@@ -32,9 +32,9 @@ const Static2 = () => {
                 Subscribe
               </Button>
             </Text>
-          </GridItem >
-          <GridItem w="100%" mt="103px" ml="60px">
-            <Image src="/images/plate.png" alt="Dan Abramov" />
+          </GridItem>
+          <GridItem mt="33%" ml="19%">
+            <Image  height="auto" maxW="100%" src="/images/plate.png" alt="Dan Abramov" />
           </GridItem>
         </Grid>
         </Box>

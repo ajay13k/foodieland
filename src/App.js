@@ -27,9 +27,14 @@ import Instagram from "./componets/instagram";
 import Delicious from "./componets/deliciousRecipe";
 import ImageSlider from "./ImageSlider"
 import { SlideData } from "./SlideData";
+import React, { useEffect } from 'react';
 export  function App() {
+  useEffect(() => {
+    document.title = 'Foodieland';
+  });
   return (
     <>
+
     <Box w="100%" p={4}>
     <ImageSlider />
       <Category_api />

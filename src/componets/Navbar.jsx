@@ -37,7 +37,7 @@ function Navbar() {
             </Text>
           </Flex>
           <HStack marginRight="200px" fontWeight="bold" spacing="30px">
-            <Link className="active" to="/">
+            <Link className="common" to="/">
               Home
             </Link>
             <Link className="common" to="/recipes">

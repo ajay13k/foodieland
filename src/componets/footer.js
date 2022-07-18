@@ -8,6 +8,7 @@ import {
   Spacer,
   Center,
   Container,
+  Thead,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
@@ -23,7 +24,7 @@ const Footer = () => {
           <Spacer />
           <Box mt={8} justifyContent="space-between">
             <HStack>
-              <Link className="active" to="/">
+              <Link className="common" to="/">
                 Home
               </Link>
               <Link className="common" to="/recipes">
@@ -46,13 +47,15 @@ const Footer = () => {
         </Flex>
         <Divider borderColor="black.400" marginBottom="30px" />
         <Box>
-          <Flex>
-            <Text>@2022 Flow base Powered by webflow</Text>
+          <Flex mb={5}>
+            <Box ml="400px">
+            <Text>@2022 Flow base Powered by <b className="red">webflow</b></Text>
+            </Box>
             <Spacer />
-            <HStack spacing={4}>
-              <FaFacebook />
-              <FaInstagram />
-              <FaTwitter />
+            <HStack spacing={6} >
+              <FaFacebook className="facebook"/>
+              <FaInstagram  className="instagram"/>
+              <FaTwitter className="twitter" />
             </HStack>
           </Flex>
         </Box>
