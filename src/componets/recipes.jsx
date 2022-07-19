@@ -37,9 +37,10 @@ function Recipe_app() {
           </Text>
         </Text>
         <Grid templateColumns="repeat(3, 1fr)" gap={6} m={10}>
-          {recipe.slice(1, 7).map((image) => (
+          {recipe.slice(1, 7).map((image,key) => (
             <GridItem w="100%" h="10px" key={image._id} marginBottom="300px">
               <Box
+                id ={key}
                 bg="#EBF8FF"
                 borderRadius={30}
                 as="article"

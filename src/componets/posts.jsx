@@ -1,21 +1,46 @@
-import React from 'react';
+import axios from "axios";
+import { useState, useEffect } from "react";
+import React from "react";
+import moment from "moment";
 import {
-    Center,
-    Container,
-    Heading,
-    Box,
-    Text,
-    Input,
-    Button,
-    Flex,
-    Img,
-    HStack,
-    Avatar,
-    Stack,
-  } from "@chakra-ui/react";
-const Posts = ({ posts}) => {
+  Center,
+  Container,
+  Heading,
+  Box,
+  Text,
+  Input,
+  Button,
+  Flex,
+  Image,
+  HStack,
+  Avatar,
+  Stack,
+} from "@chakra-ui/react";
+const Posts = () => {
+  const [blog, setBlog] = useState([]);
+  const api = "https://foodielandnod.herokuapp.com/api/getAllBlog";
+
+  useEffect(() => {
+    const loadPost = async () => {
+      const response = await axios.get(api);
+      setBlog(response.data);
+    };
+
+    loadPost();
+  }, []);
+
+  const [recipe, setRecipe] = useState([]);
+  const apiRecipe = "https://foodielandnod.herokuapp.com/api/v1/getAllRecipes";
+  useEffect(() => {
+    const loadPost = async () => {
+      const response = await axios.get(apiRecipe);
+      setRecipe(response.data);
+    };
+
+    loadPost();
+  }, []);
   return (
-<Container maxW={1080} mx={"auto"}>
+    <Container maxW={1080} mx={"auto"}>
       <Box>
         <Center>
           <Box mt={10}>
@@ -51,15 +76,20 @@ const Posts = ({ posts}) => {
       </Box>
       <Flex mt={20}>
         <Box w={750}>
-          {posts.map((item) => {
+          {blog.slice(0, 5).map((item) => {
             return (
               <Flex mb={5}>
                 <Box w={250}>
-                  <Img
+                  {/* <Img
                     src="images/food-16.png"
                     w={220}
                     h={200}
                     borderRadius={20}
+                  /> */}
+                  <Image
+                    w="300px"
+                    height="200px"
+                    src={"https://foodielandnod.herokuapp.com/" + item.image}
                   />
                 </Box>
                 <Box w={400}>
@@ -74,14 +104,17 @@ const Posts = ({ posts}) => {
                   <HStack mt={35}>
                     <Avatar
                       name="Ryan Florence"
-                      src="https://bit.ly/ryan-florence"
+                      src={"https://foodielandnod.herokuapp.com/" + item.Image}
                       size="sm"
                     />
                     <Heading fontSize={"sm"} fontWeight={800}>
-                      John Smith
+                      <Text>
+                        {" "}
+                        {item.userId.firstName} {item.userId.lastName}
+                      </Text>
                     </Heading>
-                    <Text fontSize={"sm"} color={"gray.500"}>
-                      15 March 2022
+                    <Text fontSize={"sm"}>
+                      {moment(item.userId.updatedAt).format("MMM Do YY")}
                     </Text>
                   </HStack>
                 </Box>
@@ -94,7 +127,7 @@ const Posts = ({ posts}) => {
           <Flex>
             <Box>
               <HStack mt={5}>
-                <Img
+                <Image
                   w={180}
                   h={120}
                   borderRadius={30}
@@ -110,7 +143,7 @@ const Posts = ({ posts}) => {
                 </Stack>
               </HStack>
               <HStack mt={5}>
-                <Img
+                <Image
                   w={180}
                   h={120}
                   borderRadius={30}
@@ -126,7 +159,7 @@ const Posts = ({ posts}) => {
                 </Stack>
               </HStack>
               <HStack mt={5}>
-                <Img
+                <Image
                   w={180}
                   h={120}
                   borderRadius={30}

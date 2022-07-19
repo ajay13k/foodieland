@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Center } from "@chakra-ui/react";
 import Pagination from "../componets/pagination";
 import Posts from "../componets/posts";
 import axios from "axios";
 const Blog = () => {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(4);
+  const [postsPerPage] = useState(5);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -31,11 +30,11 @@ const Blog = () => {
   return (
     <>
       <Posts posts={currentPosts} />
-        <Pagination
-          postsPerPage={postsPerPage}
-          totalPosts={posts.length}
-          paginate={paginate}
-        />
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={posts.length}
+        paginate={paginate}
+      />
     </>
   );
 };

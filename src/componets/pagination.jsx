@@ -18,7 +18,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
           <Grid templateColumns={1} gap={6}>
             <HStack>
               {pageNumber.map((number) => (
-                <GridItem>
+                <GridItem >
                   <Button
                     size={"lg"}
                     onClick={() => paginate(number)}

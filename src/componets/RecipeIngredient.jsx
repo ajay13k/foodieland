@@ -118,7 +118,7 @@ function RecipeIngrediant() {
               </Stack>
             </HStack>
             <HStack>
-              <Img mt={20} w={"100%"} h={300} src="images/food-17.png" />
+              <Img mt={20} w={"100%"} h={300} src="images/food-13.png" />
             </HStack>
           </Stack>
         </Box>
