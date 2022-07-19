@@ -7,9 +7,9 @@ import {
   Button,
   Image,
 } from "@chakra-ui/react";
-import Static2 from "../componets/static2";
-import ContactRecipe from "../componets/contactRecipe";
-import Footer from "../componets/footer";
+import Static2 from "./Home/static2";
+import Footer from "./Home/footer";
+import ContactRecipe from "./Contact/contactRecipe";
 const About = () => {
   return (
     <>

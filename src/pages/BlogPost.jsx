@@ -14,9 +14,9 @@ import {
 } from "@chakra-ui/react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import { TbMinusVertical } from "react-icons/tb";
-import Static2 from "../componets/static2";
-import ContactRecipe from "../componets/contactRecipe";
-import Footer from "../componets/footer";
+import Static2 from "./Home/static2";
+import ContactRecipe from "./Contact/contactRecipe";
+import Footer from "./Home/footer";
 const BlogPost = () => {
   return (
     <>
