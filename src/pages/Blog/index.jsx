@@ -8,6 +8,7 @@ const Blog = () => {
   const [postsPerPage] = useState(5);
 
   useEffect(() => {
+    window.scroll(0,0);
     const fetchPosts = async () => {
       const res = await axios.get(
         "https://foodielandnod.herokuapp.com/api/getAllBlog"

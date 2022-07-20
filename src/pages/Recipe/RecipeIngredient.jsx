@@ -9,15 +9,34 @@ import {
   VStack,
   Divider,
   HStack,
-  Img,
+  Image,
   Text,
   Spacer,
+  Img
 } from "@chakra-ui/react";
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { FiCircle } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 function RecipeIngrediant() {
+  const handlEvent = () => {
+    Window.scroll(0, 0);
+  };
+  const [recipe, setRecipe] = useState([]);
+  const api = "https://foodielandnod.herokuapp.com/api/v1/getAllRecipes";
+
+  useEffect(() => {
+    const loadPost = async () => {
+      const response = await axios.get(api);
+      setRecipe(response.data);
+    };
+
+    loadPost();
+  }, []);
+
   return (
     <Box maxW={1024} mx={"auto"}>
       <Flex mt={10}>
@@ -83,44 +102,33 @@ function RecipeIngrediant() {
         <Spacer />
         <Box w={380}>
           <Heading fontSize={"4xl"}>Other Receipe</Heading>
-          <Stack mt={5}>
-            <HStack>
-              <Img w={180} h={110} borderRadius={30} src="images/food-14.png" />
-              <Stack>
-                <Heading fontSize={"lg"}>
-                  Chicken MeatBall With Creamy Cheese
-                </Heading>
-                <Heading fontSize={"sm"} color={"gray.400"}>
-                  By Andreas Paul
-                </Heading>
+          {recipe.slice(1, 4).map((item) => (
+            <>
+              <Stack mt={5}>
+                <HStack>
+                  <Link to={`recipedetail/${item._id}`} onClick={handlEvent}>
+                    <Image
+                      w="300px"
+                      height="200px"
+                      src={
+                        "https://foodielandnod.herokuapp.com/" +
+                        item.recipeId.image
+                      }
+                    />
+                  </Link>
+                  <Stack>
+                    <Heading fontSize={"lg"}>{item.recipeId.title}</Heading>
+                    <Heading fontSize={"sm"} color={"gray.400"}>
+                      {item.recipeId.userId.firstName}
+                    </Heading>
+                  </Stack>
+                </HStack>
               </Stack>
-            </HStack>
-            <HStack>
-              <Img w={180} h={110} borderRadius={30} src="images/food-15.png" />
-              <Stack>
-                <Heading fontSize={"lg"}>
-                  Chicken MeatBall With Creamy Cheese
-                </Heading>
-                <Heading fontSize={"sm"} color={"gray.400"}>
-                  By Andreas Paul
-                </Heading>
-              </Stack>
-            </HStack>
-            <HStack>
-              <Img w={180} h={110} borderRadius={30} src="images/food-16.png"/>
-              <Stack>
-                <Heading fontSize={"lg"}>
-                  Chicken MeatBall With Creamy Cheese
-                </Heading>
-                <Heading fontSize={"sm"} color={"gray.400"}>
-                  By Andreas Paul
-                </Heading>
-              </Stack>
-            </HStack>
-            <HStack>
-              <Img mt={20} w={"100%"} h={300} src="images/food-13.png" />
-            </HStack>
-          </Stack>
+            </>
+          ))}
+          <HStack>
+            <Img mt={20} w={"100%"} h={300} src="images/food-13.png" />
+          </HStack>
         </Box>
       </Flex>
     </Box>

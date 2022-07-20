@@ -16,11 +16,14 @@ import {
   Avatar,
   Stack,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+
 const Posts = () => {
   const [blog, setBlog] = useState([]);
   const api = "https://foodielandnod.herokuapp.com/api/getAllBlog";
 
   useEffect(() => {
+    window.scroll(0, 0);
     const loadPost = async () => {
       const response = await axios.get(api);
       setBlog(response.data);
@@ -86,11 +89,13 @@ const Posts = () => {
                     h={200}
                     borderRadius={20}
                   /> */}
-                  <Image
-                    w="300px"
-                    height="200px"
-                    src={"https://foodielandnod.herokuapp.com/" + item.image}
-                  />
+                  <Link to={`/BlogPost/${item._id}`}>
+                    <Image
+                      w="300px"
+                      height="200px"
+                      src={"https://foodielandnod.herokuapp.com/" + item.image}
+                    />
+                  </Link>
                 </Box>
                 <Box w={400}>
                   <Heading fontSize={"md"}>{item.title}</Heading>

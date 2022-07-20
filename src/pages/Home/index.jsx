@@ -7,9 +7,10 @@ import Recipe_app from "./recipes";
 import Instagram from "./instagram";
 import Delicious from "./deliciousRecipe";
 import React, { useEffect } from 'react';
-import ImageSlider from "../../ImageSlider";
+import ImageSlider from "../ImageSlider";
 export  function Home() {
   useEffect(() => {
+    window.scroll(0,0);
     document.title = 'Foodieland';
   });
   return (

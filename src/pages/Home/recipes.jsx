@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
@@ -13,7 +14,12 @@ import {
 } from "@chakra-ui/react";
 import { BsFillAlarmFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
+import { Link } from "react-router-dom";
 function Recipe_app() {
+  const handlEvent = ()=>{
+    Window.scroll(0,0);
+
+  }
   const [recipe, setRecipe] = useState([]);
   const api = "https://foodielandnod.herokuapp.com/api/v1/getAllRecipes";
 
@@ -47,6 +53,7 @@ function Recipe_app() {
                 width="300px"
                 height="270px"
               >
+                <Link to={`recipedetail/${image._id}`} onClick={handlEvent}>
                 <Image
                   w="300px"
                   height="200px"
@@ -55,6 +62,7 @@ function Recipe_app() {
                     image.recipeId.image
                   }
                 />
+                </Link>
                 <HStack ml={10} justifyItems={"space-between"}>
                   <Button borderRadius="10px" bgColor="#EDFDFD">
                     <BsFillAlarmFill />

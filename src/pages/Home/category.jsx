@@ -11,6 +11,7 @@ import {
   Container,
   Spacer,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 function Category_api() {
   const api = "https://foodielandnod.herokuapp.com/api/getAllCategory";
   const [category, setCategory] = useState([]);
@@ -20,7 +21,6 @@ function Category_api() {
       const response = await axios.get(api);
       setCategory(response.data);
     };
-
     loadPost();
   }, []);
 
@@ -29,7 +29,7 @@ function Category_api() {
       <Container maxW={1150} mx="auto">
         <HStack>
           <Heading>Category</Heading>
-          <Spacer/>
+          <Spacer />
           <Text>
             <Button bg="#EBF8FF" color="black" marginTop="20px">
               View All Categoryies
@@ -37,14 +37,16 @@ function Category_api() {
           </Text>
         </HStack>
         <Grid templateColumns="repeat(6, 1fr)" gap={6} m={10}>
-          {category.slice(2, 8).map((img) => (
-            <GridItem w="100%" h="10px" key={img._id} m={10}>
-              <Image
-                w="100px"
-                src={"https://foodielandnod.herokuapp.com/" + img.image}
-              />
+          {category.slice(2, 8).map((item) => (
+            <GridItem w="100%" h="10px" m={10}>
+              <Link to={`#`}>
+                <Image
+                  w="100px"
+                  src={"https://foodielandnod.herokuapp.com/" + item.image}
+                />
+              </Link>
               <Heading marginLeft="20px" fontSize="20px">
-                {img.categoryName}
+                {item.categoryName}
               </Heading>
             </GridItem>
           ))}
