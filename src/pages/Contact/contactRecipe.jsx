@@ -46,7 +46,7 @@ function ContactRecipe() {
                 width="300px"
                 height="270px"
               >
-                <Link to={`recipes/${image._id}`} onClick={handlEvent}>
+                <Link to={`/recipes/${image._id}`} onClick={handlEvent}>
                   <Image
                     w="300px"
                     height="200px"
@@ -56,6 +56,7 @@ function ContactRecipe() {
                     }
                   />
                 </Link>
+                <Heading ml={3} mb={3} size={15}>{image.recipeId.title}</Heading>
                 <HStack ml={10} justifyItems={"space-between"}>
                   <Button borderRadius="10px" bgColor="#EDFDFD">
                     <BsFillAlarmFill />

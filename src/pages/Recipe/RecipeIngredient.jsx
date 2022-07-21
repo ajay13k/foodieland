@@ -12,7 +12,7 @@ import {
   Image,
   Text,
   Spacer,
-  Img
+  Img,
 } from "@chakra-ui/react";
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
@@ -106,7 +106,7 @@ function RecipeIngrediant() {
             <>
               <Stack mt={5}>
                 <HStack>
-                  <Link to={`recipedetail/${item._id}`} onClick={handlEvent}>
+                  <Link to={`/recipes/${item._id}`} onClick={handlEvent}>
                     <Image
                       w="300px"
                       height="200px"
@@ -127,7 +127,12 @@ function RecipeIngrediant() {
             </>
           ))}
           <HStack>
-            <Img mt={20} w={"100%"} h={300} src="images/food-13.png" />
+            <Img
+              mt={20}
+              w={"100%"}
+              h={300}
+              src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?cs=srgb&dl=pexels-ella-olsson-1640777.jpg&fm=jpg"
+            />
           </HStack>
         </Box>
       </Flex>

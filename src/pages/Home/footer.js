@@ -33,9 +33,6 @@ const Footer = () => {
               <Link className="common" to="/blog">
                 Blog
               </Link>
-              <Link className="common" to="/blogPost">
-                Blog Post
-              </Link>
               <Link className="common" to="/contact">
                 Contact
               </Link>

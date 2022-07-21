@@ -89,7 +89,7 @@ const Posts = () => {
                     h={200}
                     borderRadius={20}
                   /> */}
-                  <Link to={`/BlogPost/${item._id}`}>
+                  <Link to={`/blogPost/${item._id}`}>
                     <Image
                       w="300px"
                       height="200px"

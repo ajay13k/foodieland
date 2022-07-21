@@ -17,29 +17,48 @@ import { TbMinusVertical } from "react-icons/tb";
 import Static2 from "./Home/static2";
 import ContactRecipe from "./Contact/contactRecipe";
 import Footer from "./Home/footer";
-const BlogPost = () => {
+import { useState, useEffect } from "react";
+import axios from "axios";
+const BlogPost = (props) => {
+  const blogId = props.match.params.blogId;
+  console.log("id ajay", blogId);
+  const [blog, setBlog] = useState([]);
+  const imgPath = "https://foodielandnod.herokuapp.com/";
+
+  const api = "https://foodielandnod.herokuapp.com/api/getBlog?id=";
+  const getData = async () => {
+    const { data: blog } = await axios.get(api + blogId);
+    setBlog(blog.data);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <>
       <Box maxW={1024} mx={"auto"}>
         <Heading mt={10} textAlign={"center"}>
-          Full Guide to Becoming a Professional Chef
+          {blog.title}
         </Heading>
         <Center>
           <Box mt={10} display={"flex"}>
             <Avatar name="Ryan Florence" src="#" />
             <Text ml={3} fontSize={"lg"} mt={5}>
-              John Smith
+              {blog &&
+                blog.userId &&
+                blog.userId &&
+                blog.userId.firstName + "  " + blog.userId.lastName}
             </Text>
             <Icon mt={2} w={20} h={10} as={TbMinusVertical} />
             <Text fontSize={"lg"} mt={5}>
-              13 july 2022
+            {blog &&
+                blog.userId &&
+                blog.userId &&
+                blog.userId.updatedAt}
             </Text>
           </Box>
         </Center>
         <Text mt={8} textAlign={"center"}>
-          We have created a list of easy sandwich recipes you can make for
-          breakfast. But the highlight of these recipes is that <br />
-          they come with a desi twist
+          {blog.description}
         </Text>
         <Image
           w={1024}
@@ -47,9 +66,7 @@ const BlogPost = () => {
           mt={10}
           borderLeftRadius={"3xl"}
           borderRightRadius={"3xl"}
-          src={
-            "https://download-accl.zoho.com/webdownload?x-service=CLIQ&event-id=0e17e076835b478c3ae33ddb3d3408e2747ab2ea3c5e4633bad3f7f2db64c5fa58c26ecf524036c1f2687b771fa45cb630c3be46bfb02102270cb6649fbeaa22&x-cli-msg=%7B%22thumbnail%22%3Atrue%7D"
-          }
+          src={imgPath + blog.image}
         />
       </Box>
       <Flex mt={10} maxW={1024} mx={"auto"}>
@@ -113,9 +130,9 @@ const BlogPost = () => {
           <Heading>Share This On</Heading>
           <ButtonGroup>
             <VStack>
-              <Button mt="10">{<FaFacebook  color="blue"/>}</Button>
+              <Button mt="10">{<FaFacebook color="blue" />}</Button>
               <Spacer />
-              <Button mt="10">{<FaTwitter color="blue"/>}</Button>
+              <Button mt="10">{<FaTwitter color="blue" />}</Button>
               <Spacer />
               <Button my="10">{<FaInstagram color="red" />}</Button>
             </VStack>
@@ -123,8 +140,8 @@ const BlogPost = () => {
         </Box>
       </Flex>
       <Static2 />
-      <ContactRecipe/>
-      <Footer/>
+      <ContactRecipe />
+      <Footer />
     </>
   );
 };

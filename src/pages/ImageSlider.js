@@ -41,7 +41,7 @@ const ImageSlider = () => {
   return (
     <Container maxW={1150} mx="auto">
       <Carousel infiniteLoop>
-        {data. slice(2, 5).map((item) => {
+        {data. slice(2, 8).map((item) => {
           return (
             <Box>
               <Flex

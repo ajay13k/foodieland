@@ -1,13 +1,14 @@
 import "./index.css";
 import {
   Box,
-  Flex, 
+  Flex,
   Text,
   Stack,
   useColorModeValue,
   useBreakpointValue,
   HStack,
   Container,
+  Button,
 } from "@chakra-ui/react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import React from "react";
@@ -46,9 +47,6 @@ function Navbar() {
             <Link className="common" to="/blog">
               Blog
             </Link>
-            <Link className="common" to="/blogPost">
-              Blog Post
-            </Link>
             <Link className="common" to="/contact">
               Contact
             </Link>
@@ -63,9 +61,21 @@ function Navbar() {
             spacing={6}
           >
             <HStack mr="50px">
-              <FaFacebook className="facebook" title="facebook" />
-              <FaInstagram className="instagram" title="instagram" />
-              <FaTwitter className="twitter" title="twitter" />
+              <Button>
+                <a href="https://www.instagram.com/foodieland555/">
+                  {<FaFacebook className="facebook" title="facebook" />}
+                </a>
+              </Button>
+              <Button>
+                <a href="https://www.instagram.com/foodieland555/">
+                  {<FaInstagram className="instagram" title="instagram" />}
+                </a>
+              </Button>
+              <Button>
+                <a href="https://www.instagram.com/foodieland555/">
+                  {<FaTwitter className="twitter" title="twitter" />}
+                </a>
+              </Button>
             </HStack>
           </Stack>
         </Flex>
