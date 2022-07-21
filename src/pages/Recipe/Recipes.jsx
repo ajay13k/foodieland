@@ -24,7 +24,7 @@ import Static2 from "../Home/static2";
 import Footer from "../Home/footer";
 import ContactRecipe from "../Contact/contactRecipe";
 
-function RecipeDetails(props) {
+function Recipes(props) {
   const receipeId = props.match.params.receipeId;
   console.log("id", receipeId);
   const [recipe, setRecipe] = useState([]);
@@ -213,4 +213,4 @@ function RecipeDetails(props) {
   );
 }
 
-export default RecipeDetails;
+export default Recipes;

@@ -19,8 +19,12 @@ import { MdOutlineSlowMotionVideo, MdKitchen } from "react-icons/md";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import moment from "moment";
+import { Link } from "react-router-dom";
+const ImageSlider = () => {
+  const handlEvent = ()=>{
+    Window.scroll(0,0);
 
-const ImageSlider = ({ slides }) => {
+  }
   const [data, setData] = useState([]);
 
   const getPopularReceipeData = async () => {
@@ -103,6 +107,7 @@ const ImageSlider = ({ slides }) => {
                         </Text>
                       </Box>
                     </WrapItem>
+                    <Link style={{textDecoration: 'none'}} to={`recipes/${item._id}`} onClick={handlEvent} className="links">
                     <Button
                       borderRadius="10px"
                       bgColor="#000"
@@ -111,6 +116,7 @@ const ImageSlider = ({ slides }) => {
                       View Receipe
                       <MdOutlineSlowMotionVideo />
                     </Button>
+                    </Link>
                   </Wrap>
                 </Box>
                 <Box w={512}>

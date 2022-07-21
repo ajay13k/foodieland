@@ -60,7 +60,7 @@ function Delicious() {
                 width="300px"
                 height="270px"
               >
-                <Link to={`recipedetail/${image._id}`} onClick={handlEvent}>
+                <Link to={`recipes/${image._id}`} onClick={handlEvent}>
                   <Image
                     w="300px"
                     height="200px"

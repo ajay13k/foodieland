@@ -11,6 +11,7 @@ import {
   Box,
   Button,
   Container,
+  Spacer,
 } from "@chakra-ui/react";
 import { BsFillAlarmFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
@@ -53,7 +54,7 @@ function Recipe_app() {
                 width="300px"
                 height="270px"
               >
-                <Link to={`recipedetail/${image._id}`} onClick={handlEvent}>
+                <Link to={`recipes/${image._id}`} onClick={handlEvent}>
                 <Image
                   w="300px"
                   height="200px"
@@ -63,15 +64,17 @@ function Recipe_app() {
                   }
                 />
                 </Link>
+                <Heading ml={3} mb={3} size={15}>{image.recipeId.title}</Heading>
                 <HStack ml={10} justifyItems={"space-between"}>
-                  <Button borderRadius="10px" bgColor="#EDFDFD">
+                  <Text borderRadius="10px" bgColor="#EDFDFD">
                     <BsFillAlarmFill />
                     30 Minutes
-                  </Button>
-                  <Button borderRadius="10px" bgColor="#EDFDFD">
+                  </Text>
+                  <Spacer/>
+                  <Text borderRadius="10px" bgColor="#EDFDFD">
                     <ImSpoonKnife />
                     Chicken
-                  </Button>
+                  </Text>
                 </HStack>
               </Box>
             </GridItem>
