@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
@@ -17,14 +16,14 @@ import { BsFillAlarmFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
 import { Link } from "react-router-dom";
 function Recipe_app() {
-  const handlEvent = ()=>{
-    Window.scroll(0,0);
-
-  }
+  const handlEvent = () => {
+    Window.scroll(0, 0);
+  };
   const [recipe, setRecipe] = useState([]);
   const api = "https://foodielandnod.herokuapp.com/api/v1/getAllRecipes";
 
   useEffect(() => {
+    window.scroll(0, 0);
     const loadPost = async () => {
       const response = await axios.get(api);
       setRecipe(response.data);
@@ -44,10 +43,10 @@ function Recipe_app() {
           </Text>
         </Text>
         <Grid templateColumns="repeat(3, 1fr)" gap={6} m={10}>
-          {recipe.slice(1, 7).map((image,key) => (
+          {recipe.slice(1, 7).map((image, key) => (
             <GridItem w="100%" h="10px" key={image._id} marginBottom="300px">
               <Box
-                id ={key}
+                id={key}
                 bg="#EBF8FF"
                 borderRadius={30}
                 as="article"
@@ -55,22 +54,24 @@ function Recipe_app() {
                 height="270px"
               >
                 <Link to={`/recipes/${image._id}`} onClick={handlEvent}>
-                <Image
-                  w="300px"
-                  height="200px"
-                  src={
-                    "https://foodielandnod.herokuapp.com/" +
-                    image.recipeId.image
-                  }
-                />
+                  <Image
+                    w="300px"
+                    height="200px"
+                    src={
+                      "https://foodielandnod.herokuapp.com/" +
+                      image.recipeId.image
+                    }
+                  />
                 </Link>
-                <Heading ml={3} mb={3} size={15}>{image.recipeId.title}</Heading>
+                <Heading ml={3} mb={3} size={15}>
+                  {image.recipeId.title}
+                </Heading>
                 <HStack ml={10} justifyItems={"space-between"}>
                   <Text borderRadius="10px" bgColor="#EDFDFD">
                     <BsFillAlarmFill />
                     30 Minutes
                   </Text>
-                  <Spacer/>
+                  <Spacer />
                   <Text borderRadius="10px" bgColor="#EDFDFD">
                     <ImSpoonKnife />
                     Chicken

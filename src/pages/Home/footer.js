@@ -46,13 +46,21 @@ const Footer = () => {
         <Box>
           <Flex mb={5}>
             <Box ml="400px">
-            <Text>@2022 Flow base Powered by <b className="red">webflow</b></Text>
+              <Text>
+                @2022 Flow base Powered by <b className="red">webflow</b>
+              </Text>
             </Box>
             <Spacer />
-            <HStack spacing={6} >
-              <FaFacebook className="facebook"/>
-              <FaInstagram  className="instagram"/>
-              <FaTwitter className="twitter" />
+            <HStack spacing={6}>
+              <Link to={"#"}>
+                <FaFacebook className="facebook" />
+              </Link>
+              <Link to={"#"}>
+                <FaInstagram className="instagram" />
+              </Link>
+              <Link to={"#"}>
+                <FaTwitter className="twitter" />
+              </Link>
             </HStack>
           </Flex>
         </Box>

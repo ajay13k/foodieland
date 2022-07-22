@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Pagination from "./pagination"
-import Posts from "./posts";
+import Pagination from "./pagination";
+import Posts from "./blogPosts";
 import axios from "axios";
 const Blog = () => {
   const [posts, setPosts] = useState([]);
@@ -8,7 +8,7 @@ const Blog = () => {
   const [postsPerPage] = useState(5);
 
   useEffect(() => {
-    window.scroll(0,0);
+    window.scroll(0, 0);
     const fetchPosts = async () => {
       const res = await axios.get(
         "https://foodielandnod.herokuapp.com/api/getAllBlog"
@@ -26,7 +26,10 @@ const Blog = () => {
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    window.scroll(0, 0);
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <>
@@ -35,6 +38,7 @@ const Blog = () => {
         postsPerPage={postsPerPage}
         totalPosts={posts.length}
         paginate={paginate}
+        currentPage={currentPage}
       />
     </>
   );

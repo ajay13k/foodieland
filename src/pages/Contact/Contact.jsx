@@ -72,7 +72,27 @@ const Contact = () => {
               }}
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
-                  console.log(values);
+                  const formdata = JSON.stringify(values, null, 2);
+
+                  fetch(
+                    "https://foodielandnod.herokuapp.com/api/addContactDetails",
+                    {
+                      method: "POST",
+                      headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                      },
+                      body: formdata,
+                    }
+                  ).then(function (response) {
+                    console.log(response);
+                    if (response.status === 200) {
+                      alert("data submitted successfully");
+                    } else {
+                      alert("email allready exists");
+                    }
+                  });
+
                   setSubmitting(false);
                 }, 400);
               }}
@@ -174,9 +194,7 @@ const Contact = () => {
                         placeholder="message"
                       />
                       <Text color={"red"} fontSize={"sm"}>
-                        {errors.messages &&
-                          touched.messages &&
-                          errors.messages}
+                        {errors.messages && touched.messages && errors.messages}
                       </Text>
                     </FormControl>
                   </HStack>
@@ -194,7 +212,7 @@ const Contact = () => {
         </Flex>
       </Container>
       <Static2 />
-      <ContactRecipe/>
+      <ContactRecipe />
       <Footer />
     </>
   );
